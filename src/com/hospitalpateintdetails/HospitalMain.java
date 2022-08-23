@@ -7,32 +7,26 @@ import java.util.Scanner;
 
 public class HospitalMain {
 
-    Scanner sc = new Scanner(System.in);
-    static HashMap<String, Hospitals> hospitalMap = new HashMap<>();
-    String hospitalName;
-    ArrayList<Patients> patientList = new ArrayList<>();
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter hospital name");
+        Hospitals hospital = Hospitals.createNewHospital(sc.next());
 
-    static Hospitals createNewHospital(String hospitalName) {
-        Hospitals hospital = new Hospitals();
-        hospitalMap.put(hospitalName, hospital);
-        return hospital;
+        boolean doExit = false;
+
+        while (!doExit) {
+            System.out.println("\nHospitalList:" + Hospitals.hospitalMap.keySet());
+            System.out.println("Select option: \n1.create new hospital \n2.add patient \n3.Exit");
+            int option = sc.nextInt();
+            switch (option) {
+                case 1 -> {
+                    System.out.println("Enter hospital name");
+                    hospital = Hospitals.createNewHospital(sc.next());
+                }
+                case 2 -> hospital.addPatient();
+                case 3 -> doExit = true;
+                default -> System.out.println("select valid option");
+            }
+        }
     }
-
-    Patients createPatient() {
-        Patients patient = new Patients();
-        System.out.println("Enter patient name");
-        patient.setPatientName(sc.next());
-        System.out.println("Enter patient age");
-        patient.setPatientAge(sc.nextInt());
-        System.out.println("Enter patient city");
-        patient.setPatientCity(sc.next());
-        System.out.println("Enter patient state");
-        patient.setPatientState(sc.next());
-        System.out.println("Enter patient phone number");
-        patient.setPatientPhoneNumber(sc.nextInt());
-        patient.selectPatientDepartment();
-        return patient;
-
-    }
-
 }

@@ -15,9 +15,10 @@ public class Patients {
     Scanner sc = new Scanner(System.in);
 
     public enum PatientDepartment {
-        ONCOLOGY, NEUROLOGY, CARDIOLOGY, GYNOCOLOGY
+        ONCOLOGY, NEUROLOGY, CARDIOLOGY, GYNECOLOGY
     }
     public void setPatientName(String patientName) {
+
         this.patientName = patientName;
     }
 
@@ -51,7 +52,7 @@ public class Patients {
         } else if (option == 3) {
             this.patientDepartment = PatientDepartment.CARDIOLOGY;
         } else if (option == 4) {
-            this.patientDepartment = PatientDepartment.GYNOCOLOGY;
+            this.patientDepartment = PatientDepartment.GYNECOLOGY;
         }else{
             System.out.println("select valid option");
             selectPatientDepartment();
