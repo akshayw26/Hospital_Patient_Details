@@ -2,43 +2,47 @@ package com.hospitalpateintdetails;
 
 import java.security.Permission;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Hospitals {
 
+    Scanner sc = new Scanner(System.in);
+    static HashMap<String,Hospitals> hospitalMap = new HashMap<>();
+    String hospitalName;
+    ArrayList<Patients> patientList = new ArrayList<>();
 
-    enum Departments { oncology, neurology, cardiology, gynocology }
-
-
-    ArrayList<Patients> patientsList = new ArrayList<>();
-
-    public void addPatient() {
-
-
-
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Enter name -> ");
-        String name = scan.next();
-        System.out.println("Enter age -> ");
-        int age = scan.nextInt();
-        System.out.println("Enter Phone Number -> ");
-        int phoneNumber = scan.nextInt();
-        System.out.println("Enter city -> ");
-        String city = scan.next();
-        System.out.println("Enter state -> ");
-        String state = scan.next();
-        String department = scan.next();
-        System.out.println("Enter Department -> ");
-
-        Patients patient = new Patients();
-        patient.setName(name);
-        patient.setAge(age);
-        patient.setCity(city);
-        patient.setState(state);
-
-        patientsList.add(patient);
+    static Hospitals createNewHospital(String hospitalName){
+        Hospitals hospital = new Hospitals();
+        hospitalMap.put(hospitalName,hospital);
+        return hospital;
     }
 
+    Patients createPatient(){
+        Patients patient = new Patients();
+        System.out.println("Enter patient name");
+        patient.setPatientName(sc.next());
+        System.out.println("Enter patient age");
+        patient.setPatientAge(sc.nextInt());
+        System.out.println("Enter patient city");
+        patient.setPatientCity(sc.next());
+        System.out.println("Enter patient state");
+        patient.setPatientState(sc.next());
+        System.out.println("Enter patient phone number");
+        patient.setPatientPhoneNumber(sc.nextInt());
+        patient.selectPatientDepartment();
+        return patient;
+
+    }
+
+    void addPatient(){
+        Patients patient = createPatient();
+        patientList.add(patient);
+        System.out.println(patient);
+        System.out.println("patient added successfully");
+
+    }
+}
 
 
 

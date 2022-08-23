@@ -1,67 +1,60 @@
 package com.hospitalpateintdetails;
 
+
+import java.util.Scanner;
+
 public class Patients {
 
-    private String name;
-    private int age;
+    String patientName;
+    int patientAge;
+    String patientCity;
+    String patientState;
+    int patientPhoneNumber;
+    PatientDepartment patientDepartment;
 
-    private int phoneNumber;
-    private String city;
-    private String state;
+    Scanner sc = new Scanner(System.in);
 
-    private String department;
-
-    public String getName() {
-        return name;
+    public enum PatientDepartment {
+        ONCOLOGY, NEUROLOGY, CARDIOLOGY, GYNOCOLOGY
     }
-
-    public int getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPatientName(String patientName) {
+        this.patientName = patientName;
     }
 
-    public String getDepartment() {
-        return department;
+    public void setPatientAge(int patientAge) {
+        this.patientAge = patientAge;
     }
 
-    public void setDepartment(String department) {
-        this.department = department;
+    public void setPatientCity(String patientCity) {
+        this.patientCity = patientCity;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-    public int getAge() {
-        return age;
-    }
-    public void setAge(int age) {
-        this.age = age;
-    }
-    public String getCity() {
-        return city;
-    }
-    public void setCity(String city) {
-        this.city = city;
-    }
-    public String getState() {
-        return state;
-    }
-    public void setState(String state) {
-        this.state = state;
+    public void setPatientState(String patientState) {
+        this.patientState = patientState;
     }
 
-    @Override
-    public String toString() {
-        return "Patients{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", phoneNumber=" + phoneNumber +
-                ", city='" + city + '\'' +
-                ", state='" + state + '\'' +
-                ", department='" + department + '\'' +
-                '}';
+    public void setPatientPhoneNumber(int patientPhoneNumber) {
+        this.patientPhoneNumber = patientPhoneNumber;
+    }
+
+    public PatientDepartment getPatientDepartment() {
+        return patientDepartment;
+    }
+
+    public void selectPatientDepartment() {
+        System.out.println("Select Department: \n1.ONCOLOGY \n2.NEUROLOGY \n3.CARDIOLOGY \n4.GYNOCOLOGY");
+        int option = sc.nextInt();
+        if (option == 1) {
+            this.patientDepartment = PatientDepartment.ONCOLOGY;
+        } else if (option == 2) {
+            this.patientDepartment = PatientDepartment.NEUROLOGY;
+        } else if (option == 3) {
+            this.patientDepartment = PatientDepartment.CARDIOLOGY;
+        } else if (option == 4) {
+            this.patientDepartment = PatientDepartment.GYNOCOLOGY;
+        }else{
+            System.out.println("select valid option");
+            selectPatientDepartment();
+        }
     }
 }
