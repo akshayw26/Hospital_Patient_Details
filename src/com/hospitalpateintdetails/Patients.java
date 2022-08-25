@@ -9,16 +9,39 @@ public class Patients {
     int patientAge;
     String patientCity;
     String patientState;
-    int patientPhoneNumber;
+    long patientPhoneNumber;
     PatientDepartment patientDepartment;
 
     Scanner sc = new Scanner(System.in);
+
+    public String getPatientName() {
+        return patientName;
+    }
+
+    public int getPatientAge() {
+        return patientAge;
+    }
+
+    public String getPatientState() {
+        return patientState;
+    }
+
+    public long getPatientPhoneNumber() {
+        return patientPhoneNumber;
+    }
+
+    public PatientDepartment getPatientDepartment() {
+        return patientDepartment;
+    }
+
+    public String getPatientCity() {
+        return patientCity;
+    }
 
     public enum PatientDepartment {
         ONCOLOGY, NEUROLOGY, CARDIOLOGY, GYNECOLOGY
     }
     public void setPatientName(String patientName) {
-
         this.patientName = patientName;
     }
 
@@ -34,12 +57,8 @@ public class Patients {
         this.patientState = patientState;
     }
 
-    public void setPatientPhoneNumber(int patientPhoneNumber) {
+    public void setPatientPhoneNumber(long patientPhoneNumber) {
         this.patientPhoneNumber = patientPhoneNumber;
-    }
-
-    public PatientDepartment getPatientDepartment() {
-        return patientDepartment;
     }
 
     public void selectPatientDepartment() {
@@ -57,5 +76,17 @@ public class Patients {
             System.out.println("select valid option");
             selectPatientDepartment();
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Patients{" +
+                "patientName='" + patientName + '\'' +
+                ", patientAge=" + patientAge +
+                ", patientCity='" + patientCity + '\'' +
+                ", patientState='" + patientState + '\'' +
+                ", patientPhoneNumber=" + patientPhoneNumber +
+                ", patientDepartment=" + patientDepartment +
+                '}';
     }
 }
